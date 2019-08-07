@@ -1,0 +1,20 @@
+# zuul application.yml
+server:
+  port: 8888
+  
+spring:
+  application:
+    name: zuul-proxy
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  routes:
+    hotel:
+      path: /hotel-api/**
+      #url: http://localhost:9999/hotelz
+      service-id: hotel-api
+      strip-prefix: true
